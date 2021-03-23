@@ -20,17 +20,37 @@
     <xs:complexType name="Team">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
-            <xs:element name="population" type="xs:int"/>
-            <xs:element name="capital" type="xs:string"/>
-            <xs:element name="currency" type="tns:currency"/>
+            <xs:element name="ranking" type="xs:int"/>
+            <xs:element name="league" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:simpleType name="currency">
+    <xs:simpleType name="role">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="GBP"/>
-            <xs:enumeration value="EUR"/>
-            <xs:enumeration value="PLN"/>
+            <xs:enumeration value="attacker"/>
+            <xs:enumeration value="defender"/>
+            <xs:enumeration value="midfielder"/>
+            <xs:enumeration value="goalkeeper"/>
         </xs:restriction>
     </xs:simpleType>
+        <xs:element name="getPlayerRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="name" type="xs:string"></xs:element>
+    		</xs:sequence></xs:complexType>
+    </xs:element>
+    	<xs:element name="getPlayerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Player" type="tns:Player"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+        <xs:complexType name="Player">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="number" type="xs:int"/>
+            <xs:element name="position" type="tns:role"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

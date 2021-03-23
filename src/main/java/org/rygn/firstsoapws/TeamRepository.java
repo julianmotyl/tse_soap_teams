@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import io.spring.guides.gs_producing_web_service.Team;
-import io.spring.guides.gs_producing_web_service.Currency;
 
 @Component
 public class TeamRepository {
@@ -17,29 +16,27 @@ public class TeamRepository {
 	
 	@PostConstruct
 	public void initData() {
-		Team spain = new Team();
-		spain.setName("Spain");
-		spain.setCapital("Madrid");
-		spain.setCurrency(Currency.EUR);
-		spain.setPopulation(46704314);
+		Team psg = new Team();
+		psg.setName("PSG");
+		psg.setRanking(1);
+		psg.setLeague("Ligue 1");
+		
+		teams.put(psg.getName(), psg);
 
-		teams.put(spain.getName(), spain);
+		Team asse = new Team();
+		asse.setName("ASSE");
+		asse.setRanking(2);
+		asse.setLeague("Ligue 1");
 
-		Team poland = new Team();
-		poland.setName("Poland");
-		poland.setCapital("Warsaw");
-		poland.setCurrency(Currency.PLN);
-		poland.setPopulation(38186860);
 
-		teams.put(poland.getName(), poland);
+		teams.put(asse.getName(), asse);
 
-		Team uk = new Team();
-		uk.setName("United Kingdom");
-		uk.setCapital("London");
-		uk.setCurrency(Currency.GBP);
-		uk.setPopulation(63705000);
+		Team ol = new Team();
+		ol.setName("OL");
+		ol.setRanking(3);
+		ol.setLeague("Ligue 1");
 
-		teams.put(uk.getName(), uk);
+		teams.put(ol.getName(), ol);
 	}
 
 	public Team findTeam(String name) {
