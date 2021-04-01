@@ -33,13 +33,13 @@
             <xs:enumeration value="goalkeeper"/>
         </xs:restriction>
     </xs:simpleType>
-        <xs:element name="getPlayerRequest">
+    <xs:element name="getPlayerRequest">
     	<xs:complexType>
     		<xs:sequence>
     			<xs:element name="name" type="xs:string"></xs:element>
     		</xs:sequence></xs:complexType>
     </xs:element>
-    	<xs:element name="getPlayerResponse">
+   	<xs:element name="getPlayerResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Player" type="tns:Player"/>
@@ -53,4 +53,32 @@
             <xs:element name="position" type="tns:role"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:element name="getAllTeamRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="Team" type="tns:Team" minOccurs="0" maxOccurs="unbounded"/>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+   	<xs:element name="getAllTeamResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Team" type="tns:Team" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllPlayerRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="Player" type="tns:Player" minOccurs="0" maxOccurs="unbounded"/>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+   	<xs:element name="getAllPlayerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Player" type="tns:Player" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

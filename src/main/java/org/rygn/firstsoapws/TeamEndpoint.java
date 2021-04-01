@@ -6,6 +6,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import io.spring.guides.gs_producing_web_service.GetAllTeamRequest;
+import io.spring.guides.gs_producing_web_service.GetAllTeamResponse;
 import io.spring.guides.gs_producing_web_service.GetTeamRequest;
 import io.spring.guides.gs_producing_web_service.GetTeamResponse;
 
@@ -24,10 +26,22 @@ public class TeamEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getTeamRequest")
 	@ResponsePayload
 	public GetTeamResponse getTeam(@RequestPayload GetTeamRequest request) {
-		
+
 		GetTeamResponse response = new GetTeamResponse();
-		
+
 		response.setTeam(TeamRepository.findTeam(request.getName()));
+
+		return response;
+	}
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllTeamRequest")
+	@ResponsePayload
+	public GetAllTeamResponse getAllTeams(@RequestPayload GetAllTeamRequest request) {
+
+		GetAllTeamResponse response = new GetAllTeamResponse();
+
+//		response.getTeam().addAll(TeamRepository.findAllTeams());
+		TeamRepository.findAllTeams().forEach((team) -> response.getTeam().add(team));
 
 		return response;
 	}

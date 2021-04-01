@@ -1,6 +1,8 @@
 package org.rygn.firstsoapws;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -43,6 +45,12 @@ public class PlayerRepository {
 	
 	public Player findPlayer(String name) {
 		return players.get(name);
+	}
+
+	public static List<Player> findAllPlayers() {
+		ArrayList<Player> allPlayers = new ArrayList<Player>();
+		players.forEach((k,v) -> allPlayers.add(v));
+		return allPlayers;
 	}
 
 }
